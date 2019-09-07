@@ -23,7 +23,8 @@ namespace CurrencyLoader
         {
             if (e.Name.EndsWith(".json"))
             {
-                Console.WriteLine("JSON FILE: " + e.Name);
+                string json = File.ReadAllText(e.Name);
+                File.Delete(e.Name);
             }
         }
     }
