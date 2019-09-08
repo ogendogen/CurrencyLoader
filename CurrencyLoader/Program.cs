@@ -24,13 +24,13 @@ namespace CurrencyLoader
             if (e.Name.EndsWith(".json"))
             {
                 string json = File.ReadAllText(e.Name);
-                File.Delete(e.Name);
 
                 Loader.LoadByHTTP(json);
                 Console.WriteLine("HTTP loaded!");
 
-                //Loader.LoadByFTP(json);
-                //Console.WriteLine("FTP loaded!");
+                Loader.LoadByFTP(json, e.Name);
+                Console.WriteLine("FTP loaded!");
+                File.Delete(e.Name);
 
                 //Loader.LoadBySQL(json);
                 //Console.WriteLine("SQL loaded!");
