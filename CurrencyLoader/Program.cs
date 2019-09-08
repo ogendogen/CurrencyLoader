@@ -25,6 +25,15 @@ namespace CurrencyLoader
             {
                 string json = File.ReadAllText(e.Name);
                 File.Delete(e.Name);
+
+                Loader.LoadByHTTP(json);
+                Console.WriteLine("HTTP loaded!");
+
+                //Loader.LoadByFTP(json);
+                //Console.WriteLine("FTP loaded!");
+
+                //Loader.LoadBySQL(json);
+                //Console.WriteLine("SQL loaded!");
             }
         }
     }

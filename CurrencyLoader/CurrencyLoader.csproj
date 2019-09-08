@@ -47,8 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Deserializer.cs" />
     <Compile Include="Loader.cs" />
-    <Compile Include="Models\FinalOutput.cs" />
+    <Compile Include="Models\FinalGAVOutput.cs" />
     <Compile Include="Models\RatesFinal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

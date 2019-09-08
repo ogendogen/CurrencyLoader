@@ -1,6 +1,6 @@
 ﻿namespace CurrencyLoader.Models
 {
-    public class FinalOutput
+    public class FinalGAVOutput
     {
         public string Currency { get; set; }
         public string Date { get; set; }

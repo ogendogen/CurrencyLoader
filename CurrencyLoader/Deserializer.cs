@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CurrencyLoader
 {
     public static class Deserializer
     {
-        public FinalOutput DeserializeFinalOutput()
+        public static FinalGAVOutput DeserializeFinalOutput(string json)
         {
-            throw new NotImplementedException();
+            return JsonConvert.DeserializeObject<FinalGAVOutput>(json);
         }
     }
 }
