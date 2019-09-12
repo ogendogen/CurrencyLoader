@@ -16,7 +16,14 @@ namespace CurrencyLoader
             watcher.Created += File_Created;
             watcher.EnableRaisingEvents = true;
             Console.WriteLine("Listening for .json files started");
-            Console.ReadLine();
+            while(true)
+            {
+                string line = Console.ReadLine();
+                if (line == "exit")
+                {
+                    break;
+                }
+            }
         }
 
         private static void File_Created(object sender, FileSystemEventArgs e)
@@ -32,8 +39,8 @@ namespace CurrencyLoader
                 Console.WriteLine("FTP loaded!");
                 File.Delete(e.Name);
 
-                //Loader.LoadBySQL(json);
-                //Console.WriteLine("SQL loaded!");
+                Loader.LoadBySQL(json);
+                Console.WriteLine("SQL loaded!");
             }
         }
     }
