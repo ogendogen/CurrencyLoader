@@ -33,15 +33,20 @@ namespace CurrencyLoader
                 try
                 {
                     string json = File.ReadAllText(e.Name);
+                    bool isGav = true;
+                    if (json.Contains("APIV4"))
+                    {
+                        isGav = false;
+                    }
 
-                    Loader.LoadByHTTP(json);
+                    Loader.LoadByHTTP(json, isGav);
                     Console.WriteLine("HTTP loaded!");
 
                     Loader.LoadByFTP(json, e.Name);
                     Console.WriteLine("FTP loaded!");
                     File.Delete(e.Name);
 
-                    Loader.LoadBySQL(json);
+                    Loader.LoadBySQL(json, isGav);
                     Console.WriteLine("SQL loaded!");
                 }
                 catch(Exception ex)

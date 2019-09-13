@@ -14,5 +14,10 @@ namespace CurrencyLoader
         {
             return JsonConvert.DeserializeObject<FinalGAVOutput>(json);
         }
+
+        public static MediatedSchema DeserializeMediatedSchema(string json)
+        {
+            return JsonConvert.DeserializeObject<MediatedSchema>(json);
+        }
     }
 }
