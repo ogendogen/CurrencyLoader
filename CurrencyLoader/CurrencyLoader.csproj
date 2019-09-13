@@ -79,8 +79,13 @@
     <Compile Include="Database.cs" />
     <Compile Include="Deserializer.cs" />
     <Compile Include="Loader.cs" />
+    <Compile Include="Models\API.cs" />
+    <Compile Include="Models\APIV4.cs" />
     <Compile Include="Models\FinalGAVOutput.cs" />
+    <Compile Include="Models\MediatedSchema.cs" />
+    <Compile Include="Models\Rates.cs" />
     <Compile Include="Models\RatesFinal.cs" />
+    <Compile Include="Models\RatesV4.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryManager.cs" />

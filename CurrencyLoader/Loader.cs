@@ -11,10 +11,17 @@ namespace CurrencyLoader
 {
     public static class Loader
     {
-        public static void LoadByHTTP(string json)
+        public static void LoadByHTTP(string json, bool isGav)
         {
             WebClient client = new WebClient();
-            string downloaded = client.DownloadString("http://localhost/cloud.php?currency=" + json);
+            if (isGav)
+            {
+                client.DownloadString("http://localhost/cloud.php?gav=" + json);
+            }
+            else
+            {
+                client.DownloadString("http://localhost/cloud.php?lav=" + json);
+            }
         }
 
         public static void LoadByFTP(string json, string fileName)
@@ -22,23 +29,32 @@ namespace CurrencyLoader
             FtpClient client = new FtpClient("127.0.0.1", 21, "root", "root");
             client.Connect();
             client.RetryAttempts = 3;
-            client.UploadFile(fileName, "/test/" + fileName);
+            bool ret = client.UploadFile(fileName, "/test/" + fileName);
             client.Disconnect();
         }
 
-        public static bool LoadBySQL(string json)
+        public static bool LoadBySQL(string json, bool isGav)
         {
             Database db = Database.GetInstance("127.0.0.1", "root", "", "currencies");
             QueryManager manager = new QueryManager(db);
-            var jsonObject = Deserializer.DeserializeFinalOutput(json);
 
-            int retID = manager.InsertToGAV(jsonObject.Currency, jsonObject.Date, jsonObject.TargetCurrencies.CAD, jsonObject.TargetCurrencies.HKD, jsonObject.TargetCurrencies.ISK,
-                jsonObject.TargetCurrencies.PHP, jsonObject.TargetCurrencies.DKK, jsonObject.TargetCurrencies.HUF, jsonObject.TargetCurrencies.CZK, jsonObject.TargetCurrencies.GBP,
-                jsonObject.TargetCurrencies.RON, jsonObject.TargetCurrencies.SEK, jsonObject.TargetCurrencies.INR, jsonObject.TargetCurrencies.BRL, jsonObject.TargetCurrencies.RUB,
-                jsonObject.TargetCurrencies.HRK, jsonObject.TargetCurrencies.JPY, jsonObject.TargetCurrencies.THB, jsonObject.TargetCurrencies.CHF, jsonObject.TargetCurrencies.EUR,
-                jsonObject.TargetCurrencies.MYR, jsonObject.TargetCurrencies.BGN, jsonObject.TargetCurrencies.TRY, jsonObject.TargetCurrencies.CNY, jsonObject.TargetCurrencies.NOK,
-                jsonObject.TargetCurrencies.NZD, jsonObject.TargetCurrencies.ZAR, jsonObject.TargetCurrencies.USD, jsonObject.TargetCurrencies.MXN, jsonObject.TargetCurrencies.SGD,
-                jsonObject.TargetCurrencies.AUD, jsonObject.TargetCurrencies.ILS, jsonObject.TargetCurrencies.KRW, jsonObject.TargetCurrencies.PLN);
+            int retID = -1;
+            if (isGav)
+            {
+                var gavObject = Deserializer.DeserializeFinalOutput(json);
+                retID = manager.InsertToGAV(gavObject.Currency, gavObject.Date, gavObject.TargetCurrencies.CAD, gavObject.TargetCurrencies.HKD, gavObject.TargetCurrencies.ISK,
+    gavObject.TargetCurrencies.PHP, gavObject.TargetCurrencies.DKK, gavObject.TargetCurrencies.HUF, gavObject.TargetCurrencies.CZK, gavObject.TargetCurrencies.GBP,
+    gavObject.TargetCurrencies.RON, gavObject.TargetCurrencies.SEK, gavObject.TargetCurrencies.INR, gavObject.TargetCurrencies.BRL, gavObject.TargetCurrencies.RUB,
+    gavObject.TargetCurrencies.HRK, gavObject.TargetCurrencies.JPY, gavObject.TargetCurrencies.THB, gavObject.TargetCurrencies.CHF, gavObject.TargetCurrencies.EUR,
+    gavObject.TargetCurrencies.MYR, gavObject.TargetCurrencies.BGN, gavObject.TargetCurrencies.TRY, gavObject.TargetCurrencies.CNY, gavObject.TargetCurrencies.NOK,
+    gavObject.TargetCurrencies.NZD, gavObject.TargetCurrencies.ZAR, gavObject.TargetCurrencies.USD, gavObject.TargetCurrencies.MXN, gavObject.TargetCurrencies.SGD,
+    gavObject.TargetCurrencies.AUD, gavObject.TargetCurrencies.ILS, gavObject.TargetCurrencies.KRW, gavObject.TargetCurrencies.PLN);
+            }
+            else
+            {
+                var lavObject = Deserializer.DeserializeMediatedSchema(json);
+                retID = manager.InsertToLAV(lavObject.API, lavObject.APIV4); 
+            }
 
             return retID > -1;
         }
