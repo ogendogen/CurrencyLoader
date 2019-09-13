@@ -28,7 +28,7 @@ namespace CurrencyLoader
         {
             MySqlCommand comm = Database.dbConnection.CreateCommand();
             StringBuilder query = new StringBuilder();
-            query.Append("INSERT INTO `currency_gav` SET currency = @curr, date = @date, CAD = @CAD, HKD = @HKD, ISK = @ISK, PHP = @PHP, DKK = @DKK, HUF = @HUF, CZK = @CZK, GBP = @GBP, RON = @RON, SEK = @SEK, ");
+            query.Append("INSERT INTO `currencies_gav` SET currency = @curr, date = @date, CAD = @CAD, HKD = @HKD, ISK = @ISK, PHP = @PHP, DKK = @DKK, HUF = @HUF, CZK = @CZK, GBP = @GBP, RON = @RON, SEK = @SEK, ");
             query.Append("INR = @INR, BRL = @BRL, RUB = @RUB, HRK = @HRK, JPY = @JPY, THB = @THB, CHF = @CHF, EUR = @EUR, MYR = @MYR, BGN = @BGN, TRY = @TRY, CNY = @CNY, NOK = @NOK, NZD = @NZD, ZAR = @ZAR,");
             query.Append("USD = @USD, MXN = @MXN, SGD = @SGD, AUD = @AUD, ILS = @ILS, KRW = @KRW, PLN = @PLN");
             comm.CommandText = query.ToString();
@@ -69,7 +69,7 @@ namespace CurrencyLoader
             comm.Parameters.AddWithValue("@PLN", PLN);
 
             int id = -1;
-            id = Convert.ToInt32(comm.ExecuteScalar());
+            var ret = comm.ExecuteScalar();
             return id;
         }
     }

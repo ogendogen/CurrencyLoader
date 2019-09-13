@@ -30,17 +30,25 @@ namespace CurrencyLoader
         {
             if (e.Name.EndsWith(".json"))
             {
-                string json = File.ReadAllText(e.Name);
+                try
+                {
+                    string json = File.ReadAllText(e.Name);
 
-                Loader.LoadByHTTP(json);
-                Console.WriteLine("HTTP loaded!");
+                    Loader.LoadByHTTP(json);
+                    Console.WriteLine("HTTP loaded!");
 
-                Loader.LoadByFTP(json, e.Name);
-                Console.WriteLine("FTP loaded!");
-                File.Delete(e.Name);
+                    Loader.LoadByFTP(json, e.Name);
+                    Console.WriteLine("FTP loaded!");
+                    File.Delete(e.Name);
 
-                Loader.LoadBySQL(json);
-                Console.WriteLine("SQL loaded!");
+                    Loader.LoadBySQL(json);
+                    Console.WriteLine("SQL loaded!");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("Error occured! Check log file");
+                    File.AppendAllText("errorlog.log", DateTime.Now.ToString() + "|" + ex.Message + "|" + ex.StackTrace);
+                }
             }
         }
     }

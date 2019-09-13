@@ -16,6 +16,7 @@ namespace CurrencyLoader
         {
             string connectionString = String.Format("Server={0}; database={1}; UID={2}; password={3}", host, db, user, pass);
             dbConnection = new MySqlConnection(connectionString);
+            dbConnection.Open();
         }
 
         public static Database GetInstance(string host, string user, string pass, string db)
