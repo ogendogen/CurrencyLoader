@@ -24,13 +24,14 @@ namespace CurrencyLoader
             }
         }
 
-        public static void LoadByFTP(string json, string fileName)
+        public static bool LoadByFTP(string json, string fileName)
         {
-            FtpClient client = new FtpClient("127.0.0.1", 21, "root", "root");
+            FtpClient client = new FtpClient("185.61.138.154", 39393, "marcin", "M@rcin12#4567890");
             client.Connect();
             client.RetryAttempts = 3;
-            bool ret = client.UploadFile(fileName, "/test/" + fileName);
+            bool ret = client.UploadFile(fileName, "/home/marcin/watchdog/" + fileName);
             client.Disconnect();
+            return ret;
         }
 
         public static bool LoadBySQL(string json, bool isGav)
