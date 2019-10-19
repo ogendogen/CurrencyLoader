@@ -96,7 +96,9 @@
     <Compile Include="Loader.cs" />
     <Compile Include="Models\API.cs" />
     <Compile Include="Models\APIV4.cs" />
+    <Compile Include="Models\FinalGAVOutputWithRoot.cs" />
     <Compile Include="Models\FinalGAVOutput.cs" />
+    <Compile Include="Models\MediatedSchemaWithRoot.cs" />
     <Compile Include="Models\MediatedSchema.cs" />
     <Compile Include="Models\Rates.cs" />
     <Compile Include="Models\RatesFinal.cs" />

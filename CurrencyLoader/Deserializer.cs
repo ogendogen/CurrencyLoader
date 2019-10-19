@@ -15,6 +15,11 @@ namespace CurrencyLoader
             return JsonConvert.DeserializeObject<FinalGAVOutput>(json);
         }
 
+        public static FinalGAVOutputWithRoot DeserializeFinalOutputWithRoot(string json)
+        {
+            return JsonConvert.DeserializeObject<FinalGAVOutputWithRoot>(json);
+        }
+
         public static MediatedSchema DeserializeMediatedSchema(string json)
         {
             return JsonConvert.DeserializeObject<MediatedSchema>(json);

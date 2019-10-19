@@ -54,7 +54,7 @@ namespace CurrencyLoader
             else
             {
                 var lavObject = Deserializer.DeserializeMediatedSchema(json);
-                retID = manager.InsertToLAV(lavObject.API, lavObject.APIV4); 
+                retID = manager.InsertToLAV(lavObject.API, lavObject.APIV4);
             }
 
             return retID > -1;
