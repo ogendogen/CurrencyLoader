@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyLoader", "CurrencyLoader\CurrencyLoader.csproj", "{E544E5E7-34AC-42A3-BCF2-13AD9BED2567}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfWindow", "WpfWindow\WpfWindow.csproj", "{BE7BB3A1-A0F9-4EBB-9CC0-FF7105821A40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{E544E5E7-34AC-42A3-BCF2-13AD9BED2567}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E544E5E7-34AC-42A3-BCF2-13AD9BED2567}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E544E5E7-34AC-42A3-BCF2-13AD9BED2567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7BB3A1-A0F9-4EBB-9CC0-FF7105821A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7BB3A1-A0F9-4EBB-9CC0-FF7105821A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7BB3A1-A0F9-4EBB-9CC0-FF7105821A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7BB3A1-A0F9-4EBB-9CC0-FF7105821A40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2695FC74-5A2C-4B3F-8CE9-A5CD069CA440}
 	EndGlobalSection
 EndGlobal
