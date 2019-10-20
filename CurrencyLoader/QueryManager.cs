@@ -20,7 +20,7 @@ namespace CurrencyLoader
 
         public int InsertToLAV(API api, APIV4 apiv4)
         {
-            MySqlCommand comm = Database.dbConnection.CreateCommand();
+            MySqlCommand comm = Database.DbConnection.CreateCommand();
             StringBuilder query = new StringBuilder();
             query.Append("INSERT INTO `currencies_lav` SET currency1 = @curr1, date1 = @date1, CAD1 = @CAD1, HKD1 = @HKD1, ISK1 = @ISK1, PHP1 = @PHP1, DKK1 = @DKK1, HUF1 = @HUF1, CZK1 = @CZK1, GBP1 = @GBP1, RON1 = @RON1, SEK1 = @SEK1, ");
             query.Append("INR1 = @INR1, BRL1 = @BRL1, RUB1 = @RUB1, HRK1 = @HRK1, JPY1 = @JPY1, THB1 = @THB1, CHF1 = @CHF1, EUR1 = @EUR1, MYR1 = @MYR1, BGN1 = @BGN1, TRY1 = @TRY1, CNY1 = @CNY1, NOK1 = @NOK1, NZD1 = @NZD1, ZAR1 = @ZAR1,");
@@ -116,7 +116,7 @@ namespace CurrencyLoader
             double MXN, double SGD, double AUD, double ILS, double KRW,
             double PLN)
         {
-            MySqlCommand comm = Database.dbConnection.CreateCommand();
+            MySqlCommand comm = Database.DbConnection.CreateCommand();
             StringBuilder query = new StringBuilder();
             query.Append("INSERT INTO `currencies_gav` SET currency = @curr, date = @date, CAD = @CAD, HKD = @HKD, ISK = @ISK, PHP = @PHP, DKK = @DKK, HUF = @HUF, CZK = @CZK, GBP = @GBP, RON = @RON, SEK = @SEK, ");
             query.Append("INR = @INR, BRL = @BRL, RUB = @RUB, HRK = @HRK, JPY = @JPY, THB = @THB, CHF = @CHF, EUR = @EUR, MYR = @MYR, BGN = @BGN, TRY = @TRY, CNY = @CNY, NOK = @NOK, NZD = @NZD, ZAR = @ZAR,");

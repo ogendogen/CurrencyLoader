@@ -96,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CurrencyLoader\CurrencyLoader.csproj">
-      <Project>{E544E5E7-34AC-42A3-BCF2-13AD9BED2567}</Project>
+      <Project>{e544e5e7-34ac-42a3-bcf2-13ad9bed2567}</Project>
       <Name>CurrencyLoader</Name>
     </ProjectReference>
   </ItemGroup>

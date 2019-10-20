@@ -27,8 +27,10 @@ namespace WpfWindow
         public MainWindow()
         {
             InitializeComponent();
-            Watcher = new FileSystemWatcher();
-            Watcher.Path = ".";
+            Watcher = new FileSystemWatcher
+            {
+                Path = "."
+            };
             Watcher.Created += File_Created;
         }
 
@@ -76,7 +78,7 @@ namespace WpfWindow
                     }
                     else if (radioButtonFTP.IsChecked.Value)
                     {
-                        Loader.LoadByFTP(json, e.Name);
+                        Loader.LoadByFTP(e.Name);
                         AppendLog($"File {e.Name} loaded by FTP!");
                         File.Delete(e.Name);
                     }
