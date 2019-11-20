@@ -71,18 +71,18 @@ namespace WpfWindow
                         isGav = false;
                     }
 
-                    if (radioButtonHTTP.IsChecked.Value)
+                    if (IsHTTPChecked())
                     {
                         Loader.LoadByHTTP(json, isGav);
                         AppendLog("HTTP loaded!");
                     }
-                    else if (radioButtonFTP.IsChecked.Value)
+                    else if (IsFTPChecked())
                     {
                         Loader.LoadByFTP(e.Name);
                         AppendLog($"File {e.Name} loaded by FTP!");
                         File.Delete(e.Name);
                     }
-                    else if (radioButtonSQL.IsChecked.Value)
+                    else if (IsSQLChecked())
                     {
                         Loader.LoadBySQL(json, isGav);
                         AppendLog("SQL loaded!");
@@ -103,6 +103,36 @@ namespace WpfWindow
                 textBox.AppendText(log + "\r\n");
                 textBox.ScrollToEnd();
             });
+        }
+
+        private bool IsHTTPChecked()
+        {
+            bool ret = false;
+            radioButtonHTTP.Dispatcher.Invoke(() =>
+            {
+                ret = radioButtonHTTP.IsChecked.Value;
+            });
+            return ret;
+        }
+
+        private bool IsFTPChecked()
+        {
+            bool ret = false;
+            radioButtonFTP.Dispatcher.Invoke(() =>
+            {
+                ret = radioButtonFTP.IsChecked.Value;
+            });
+            return ret;
+        }
+
+        private bool IsSQLChecked()
+        {
+            bool ret = false;
+            radioButtonSQL.Dispatcher.Invoke(() =>
+            {
+                ret = radioButtonSQL.IsChecked.Value;
+            });
+            return ret;
         }
     }
 }
